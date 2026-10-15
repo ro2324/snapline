@@ -23,6 +23,14 @@ export interface ApiExecuteResult {
   data: unknown;
   headers: Record<string, string>;
   raw?: string;
+  /** GraphQL `errors` array when present on the response body. */
+  errors?: unknown[];
+  /** Set when `dataPath` cannot be resolved under GraphQL `data`. */
+  dataPathError?: {
+    path: string;
+    availableKeys: string[];
+    message: string;
+  };
 }
 
 interface ApiConfigBase {
